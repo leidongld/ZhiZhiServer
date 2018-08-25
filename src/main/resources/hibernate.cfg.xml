@@ -56,10 +56,10 @@
         -->
 
 
-        <!--<mapping package="net.qiujuer.web.italker.push.bean.db"-->
-                 <!--class="net.qiujuer.web.italker.push.bean.db.User"/>-->
-        <!--<mapping package="net.qiujuer.web.italker.push.bean.db"-->
-                 <!--class="net.qiujuer.web.italker.push.bean.db.UserFollow"/>-->
+        <mapping package="net.leidong.web.zhizhi.push.bean.db"
+                 class="net.leidong.web.zhizhi.push.bean.db.User"/>
+        <mapping package="net.leidong.web.zhizhi.push.bean.db"
+                 class="net.leidong.web.zhizhi.push.bean.db.UserFollow"/>
 
         <!--<mapping package="net.qiujuer.web.italker.push.bean.db"-->
                  <!--class="net.qiujuer.web.italker.push.bean.db.Group"/>-->

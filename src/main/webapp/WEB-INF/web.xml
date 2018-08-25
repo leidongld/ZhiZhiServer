@@ -13,7 +13,7 @@
             <param-value>net.leidong.web.zhizhi.push.service</param-value>
         </init-param>
         <init-param>
-            <param-name>javax.ws.rs.Applocation</param-name>
+            <param-name>javax.ws.rs.Application</param-name>
             <param-value>net.leidong.web.zhizhi.push.Application</param-value>
         </init-param>
 

@@ -21,15 +21,15 @@ dependencies {
     compile 'com.google.guava:guava:21.0'
 
     // 推送依赖
-    compile 'com.gexin.platform:gexin-rp-sdk-http:4.0.1.7'
+//    compile 'com.gexin.platform:gexin-rp-sdk-http:4.0.1.7'
 
 
     // Jersey 轻量级Restful接口框架
     compile 'org.glassfish.jersey.core:jersey-client:2.26-b03'
     compile 'org.glassfish.jersey.core:jersey-server:2.26-b03'
     compile 'org.glassfish.jersey.containers:jersey-container-servlet:2.26-b03'
-    // 也是一个 Json 解析库
-    compile 'org.glassfish.jersey.media:jersey-media-json-jackson:2 .26-b03'
+
+    compile 'org.codehaus.jackson:jackson-jaxrs:1.9.13'
 
     // 数据库操作框架
     // https://mvnrepository.com/artifact/org.hibernate/hibernate-core
