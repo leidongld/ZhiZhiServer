@@ -2,7 +2,6 @@ package net.leidong.web.zhizhi.push.bean.db;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.JoinColumnOrFormula;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
@@ -10,13 +9,16 @@ import java.time.LocalDateTime;
 
 /**
  * @program: ZhiZhiServer
- * @description: 群组的Model，对应数据库
+ * @description:
  * @author: Lei Dong
- * @create: 2018-08-25 22:07
+ * @create: 2018-08-26 22:50
  **/
 @Entity
-@Table(name = "TB_GROUP")
-public class Group {
+@Table(name = "TB_APPLY")
+public class Apply {
+    public static final int TYPE_ADD_USER = 1;
+    public static final int TYPE_ADD_GROUP = 2;
+
     @Id
     @PrimaryKeyJoinColumn
     @GeneratedValue(generator = "uuid")
@@ -25,13 +27,16 @@ public class Group {
     private String id;
 
     @Column(nullable = false)
-    private String name;
-
-    @Column(nullable = false)
     private String description;
 
+    @Column(columnDefinition = "TEXT")
+    private String attach;
+
     @Column(nullable = false)
-    private String picture;
+    private int type;
+
+    @Column(nullable = false)
+    private String targetId;
 
     @CreationTimestamp
     @Column(nullable = false)
@@ -41,12 +46,12 @@ public class Group {
     @Column(nullable = false)
     private LocalDateTime updateAt = LocalDateTime.now();
 
-    @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "ownerId")
-    private User owner;
+    @ManyToOne
+    @JoinColumn(name = "applicantId")
+    private User applicant;
 
-    @Column(nullable = false, updatable = false, insertable = false)
-    private String ownerId;
+    @Column(updatable = false, insertable = false)
+    private String applicantId;
 
     public String getId() {
         return id;
@@ -54,14 +59,6 @@ public class Group {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getDescription() {
@@ -72,12 +69,28 @@ public class Group {
         this.description = description;
     }
 
-    public String getPicture() {
-        return picture;
+    public String getAttach() {
+        return attach;
     }
 
-    public void setPicture(String picture) {
-        this.picture = picture;
+    public void setAttach(String attach) {
+        this.attach = attach;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public String getTargetId() {
+        return targetId;
+    }
+
+    public void setTargetId(String targetId) {
+        this.targetId = targetId;
     }
 
     public LocalDateTime getCreateAt() {
@@ -96,19 +109,19 @@ public class Group {
         this.updateAt = updateAt;
     }
 
-    public User getOwner() {
-        return owner;
+    public User getApplicant() {
+        return applicant;
     }
 
-    public void setOwner(User owner) {
-        this.owner = owner;
+    public void setApplicant(User applicant) {
+        this.applicant = applicant;
     }
 
-    public String getOwnerId() {
-        return ownerId;
+    public String getApplicantId() {
+        return applicantId;
     }
 
-    public void setOwnerId(String ownerId) {
-        this.ownerId = ownerId;
+    public void setApplicantId(String applicantId) {
+        this.applicantId = applicantId;
     }
 }

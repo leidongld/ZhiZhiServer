@@ -53,18 +53,6 @@ public class UserFollow {
     @Column(nullable = false)
     private LocalDateTime updateAt = LocalDateTime.now();
 
-    // 我关注的人的列表信息
-    @JoinColumn(name = "originId")
-    @LazyCollection(LazyCollectionOption.EXTRA)
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<UserFollow> following = new HashSet<>();
-
-    // 关注我的人的列表
-    @JoinColumn(name = "targetId")
-    @LazyCollection(LazyCollectionOption.EXTRA)
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<UserFollow> followers = new HashSet<>();
-
     public String getId() {
         return id;
     }
@@ -127,21 +115,5 @@ public class UserFollow {
 
     public void setTargetId(String targetId) {
         this.targetId = targetId;
-    }
-
-    public Set<UserFollow> getFollowing() {
-        return following;
-    }
-
-    public void setFollowing(Set<UserFollow> following) {
-        this.following = following;
-    }
-
-    public Set<UserFollow> getFollowers() {
-        return followers;
-    }
-
-    public void setFollowers(Set<UserFollow> followers) {
-        this.followers = followers;
     }
 }

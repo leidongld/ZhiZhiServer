@@ -2,7 +2,6 @@ package net.leidong.web.zhizhi.push.bean.db;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.JoinColumnOrFormula;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
@@ -41,14 +40,26 @@ public class Message {
     @Column(nullable = false)
     private String type;
 
-    @Column(nullable = false)
-    private String sebder;
+    @JoinColumn(name = "senderId")
+    @ManyToOne(optional = false)
+    private User sender;
 
-    @Column
-    private String receiver;
+    @Column(nullable = false, updatable = false, insertable = false)
+    private String senderId;
 
-    @Column
+    @ManyToOne
+    @JoinColumn(name = "receiverId")
+    private User receiver;
+
+    @Column(nullable = false, insertable = false)
+    private String receiverId;
+
+    @ManyToOne
+    @JoinColumn(name = "groupId")
     private Group group;
+
+    @Column(nullable = false, insertable = false)
+    private String groupId;
 
     @CreationTimestamp
     @Column(nullable = false)
@@ -90,19 +101,19 @@ public class Message {
         this.type = type;
     }
 
-    public String getSebder() {
-        return sebder;
+    public User getSender() {
+        return sender;
     }
 
-    public void setSebder(String sebder) {
-        this.sebder = sebder;
+    public void setSender(User sender) {
+        this.sender = sender;
     }
 
-    public String getReceiver() {
+    public User getReceiver() {
         return receiver;
     }
 
-    public void setReceiver(String receiver) {
+    public void setReceiver(User receiver) {
         this.receiver = receiver;
     }
 
@@ -128,5 +139,29 @@ public class Message {
 
     public void setUpdateAt(LocalDateTime updateAt) {
         this.updateAt = updateAt;
+    }
+
+    public String getSenderId() {
+        return senderId;
+    }
+
+    public void setSenderId(String senderId) {
+        this.senderId = senderId;
+    }
+
+    public String getReceiverId() {
+        return receiverId;
+    }
+
+    public void setReceiverId(String receiverId) {
+        this.receiverId = receiverId;
+    }
+
+    public String getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(String groupId) {
+        this.groupId = groupId;
     }
 }
