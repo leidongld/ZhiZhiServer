@@ -1,5 +1,6 @@
 package net.leidong.web.zhizhi.push;
 
+import net.leidong.web.zhizhi.push.provider.GsonProvider;
 import net.leidong.web.zhizhi.push.service.AccountService;
 import org.codehaus.jackson.jaxrs.JacksonJsonProvider;
 import org.glassfish.jersey.server.ResourceConfig;
@@ -18,7 +19,10 @@ public class Application extends ResourceConfig {
         packages(AccountService.class.getPackage().getName());
 
         // 注册Json解析器
-        register(JacksonJsonProvider.class.getPackage().getName());
+//        register(JacksonJsonProvider.class.getPackage().getName());
+
+        // 替换解析器为Gson
+        register(GsonProvider.class);
 
         // 注册日志打印输出
         register(Logger.class.getPackage().getName());

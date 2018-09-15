@@ -1,5 +1,6 @@
 package net.leidong.web.zhizhi.push.service;
 
+import net.leidong.web.zhizhi.push.bean.api.account.RegisterModel;
 import net.leidong.web.zhizhi.push.bean.db.User;
 
 import javax.ws.rs.*;
@@ -13,21 +14,15 @@ import javax.ws.rs.core.MediaType;
  **/
 @Path("/account")
 public class AccountService {
-    @GET
-    @Path("/login")
-    public String get() {
-        return "You get the login.";
-    }
-
     @POST
-    @Path("/login")
+    @Path("/register")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public User post() {
-        User user = new User();
-        user.setId("123456");
-        user.setName("雷棟");
-        user.setSex(0);
-        return user;
+    public RegisterModel register(RegisterModel model) {
+        return model;
+//        User user = new User();
+//        user.setName(model.getName());
+//        user.setSex(2);
+//        return user;
     }
 }

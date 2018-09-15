@@ -16,6 +16,11 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "TB_MESSAGE")
 public class Message {
+    // 发送给人的
+    public static final int RECEIVER_TYPE_NONE = 1;
+    // 发送给群的
+    public static final int RECEIVER_TYPE_GROUP = 2;
+
     // 字符串类型
     public static final int TYPE_STR = 1;
     // 图片类型
@@ -38,7 +43,7 @@ public class Message {
     private String attach;
 
     @Column(nullable = false)
-    private String type;
+    private int type;
 
     @JoinColumn(name = "senderId")
     @ManyToOne(optional = false)
@@ -93,11 +98,11 @@ public class Message {
         this.attach = attach;
     }
 
-    public String getType() {
+    public int getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(int type) {
         this.type = type;
     }
 
